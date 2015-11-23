@@ -17,7 +17,7 @@ function steepestdec(f,∇f,x0,ϵ,maxit)
     #Start the iterations
     while i<=maxit && norm(∇f(x)) > ϵ
         #negative gradient descent direction
-        d=-∇f(x)
+        d=-∇f(x)/norm(∇f(x))
         y=[y,x+armijo(f,∇f,x,σ,d,β)*d]
         x=x+armijo(f,∇f,x,σ,d,β)*d
         i+=1
@@ -85,5 +85,5 @@ M=length(X2)
 Z2=[f([X2[i],Y2[i]]) for i in 1:M];
 
 plot_wireframe(Xgrid,Ygrid,Z)
-plot(X1, Y2, Z2, "ro")
-plot(X1, Y2, Z2, "r")
+plot(X2, Y2, Z2, "ro")
+plot(X2, Y2, Z2, "r")
